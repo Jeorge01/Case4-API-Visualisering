@@ -1,44 +1,27 @@
-const APIKey = "UQ0nHj3wQkHLj52bjcjrk1QF8WtKmUmUqCSIMQSA"
+const APIKey = ""
 
-// document.getElementById("content");
+const apiurl = "./NASAImageAndVideoLibrary.json";
 
-// https://api.nasa.gov/planetary/apod?api_key=UQ0nHj3wQkHLj52bjcjrk1QF8WtKmUmUqCSIMQSA
+// `https://api.nasa.gov/planetary/apod?api_key=${APIKey}&count=10`
 
-// let url = "https://images-api.nasa.gov/search?q=space"
-
-// const search = document.querySelector("#search")
-// const button = document.querySelector("button")
-
-// button.addEventListener("click", () => {
-
-//     const search = document.querySelector("#search")
-
-//     url = `https://images-api.nasa.gov/search?q=`
-
-
-//     fetch(url).then(response => response.json()).then((data) => {
-//         console.log("data", data);
-//     });
-// });
-
-
-
-
-async function APOD() {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIKey}`)
+async function ImageAndVideoLibrary() {
+    const response = await fetch(apiurl)
     const info = await response.json()
     console.log(info)
-    // document.getElementById("content").textContent = info.date
-    document.getElementById("content").innerHTML = `<img src="${info.url}" width="200px"><p>${info.title}</p>${info.date}<p>${info.explanation}</p>`
+    document.getElementById("content").innerHTML = `<img src="${info[0].hdurl}" width="200px"><p>${info[0].title}</p>${info[0].date}<p>${info[0].explanation}</p><p>${info[0].copyright}</p>`
 }
 
-APOD()
+ImageAndVideoLibrary()
 
-async function Asteroids() {
-    const response = await fetch (`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${APIKey}`)
-    const info = await response.json()
-    console.log(info)
-}
+// console.log(API)
+
+
+
+
+
+
+
+
 
 
 
