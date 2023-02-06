@@ -21,10 +21,19 @@ filter.type = "button"
 const search = document.createElement("input");
 search.classList.add("search")
 const searchForm = document.createElement("form");
-
 const content = document.createElement("div")
-
 const filterContent = document.createElement("div")
+const year_start = document.createElement("input")
+year_start.classList.add("year_start")
+year_start.classList.add("hidden")
+year_start.type = "number"
+year_start.value = 0
+const year_end = document.createElement("input")
+year_end.classList.add("year_end")
+year_end.classList.add("hidden")
+year_end.type = "number"
+year_end.value = "2023"
+
 
 buttonForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -51,13 +60,13 @@ buttonForm.addEventListener("submit", (e) => {
     const titleContainer = document.createElement("div")
     
     search.classList.add("container5")
-    
+    filter.classList.add("filter")
     
 
    
     
     
-    filter.classList.add("filter")
+    
     backgroundOverlay.appendChild(container)
     container.appendChild(titleContainer)
     titleContainer.appendChild(h1);
@@ -66,8 +75,8 @@ buttonForm.addEventListener("submit", (e) => {
     searchForm.appendChild(filterContent)
     filterContent.appendChild(filter);
     backgroundOverlay.appendChild(content)
-    
-    
+    // filterContent.appendChild(year_start)      ????????????????????
+    // filterContent.appendChild(year_end)
 });
 
 
@@ -77,6 +86,8 @@ filter.addEventListener("click", (e) => {
 
     filter.classList.toggle("filterOpen")
     filterContent.classList.toggle("filterContent")
+    year_start.classList.toggle("hidden")
+    year_end.classList.toggle("hidden")
     
 })
 
@@ -115,6 +126,7 @@ searchForm.addEventListener("submit", (e) => {
         
     };
     ImageAndVideoLibrary()
+    content.innerHTML = "";
 })
 
 
