@@ -30,15 +30,15 @@ a {
 
 
 .hidden {
-    display: hidden;
+    display: none;
 
 }
 
 .container {
     display: flex;
     justify-content: center;
-    
-    
+
+
 }
 
 .container2 {
@@ -46,8 +46,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+
+
 }
 
 
@@ -106,11 +106,11 @@ p {
 }
 
 .myFooter {
-    
-    
+
+
     width: 274px;
     height: 66px;
-    
+
     font-size: 15px;
     background: linear-gradient(180deg, rgba(10, 2, 34, 0.8) 0%, rgba(12, 8, 21, 0) 100%);
     box-shadow: inset 0px 3px 6px rgba(255, 255, 255, 0.25), inset 0px 12px 8px rgba(255, 255, 255, 0.25), inset 0px 8px 8px rgba(255, 255, 255, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.25);
@@ -126,19 +126,19 @@ p {
 
 .footerName {
     margin-top: 19px;
-    
+
 }
 
 .mail {
     font-size: 12px;
     margin-top: 4px;
-    
+
 }
 
 .github {
     font-size: 12px;
     margin-top: 4px;
-    
+
 }
 
 
@@ -147,4 +147,84 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+.container4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container5 {
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    margin-top: 20px;
+    width: 374px;
+    height: 54px;
+    left: 20px;
+    top: 136px;
+
+    background: rgba(137, 19, 255, 0.08);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: white;
+
+    border-style: none;
+    
+}
+
+.filter {
+    margin-top: 13px;
+    /* position: relative; */
+    box-sizing: border-box;
+
+    border: double 5px transparent;
+    /* background-image: linear-gradient(#8913FF 8%, #8913FF 8%),
+    linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);;
+    background-origin: border-box;
+    background-clip: content-box, border-box; */
+
+    border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    border-image-slice: 1;
+    
+    background-color: rgba(50, 50, 50, 0.5);
+
+    width: 124px;
+    height: 45px;
+    left: 20px;
+    top: 203px;
+    
+
+
+    /* background: rgba(137, 19, 255, 0.08); */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.filter::before {
+    content: "";
+    position: absolute;
+}
+
+.logo {
+    margin-top: 50px;
+    /* flex-direction: row; */
+    width: 201px;
+    height: 66px;
+    left: 107px;
+    top: 50px;
+
+    font-family: 'My Soul';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 66px;
+
+    color: #201B3D;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
