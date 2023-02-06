@@ -22,6 +22,10 @@ const search = document.createElement("input");
 search.classList.add("search")
 const searchForm = document.createElement("form");
 
+const content = document.createElement("div")
+
+const filterContent = document.createElement("div")
+
 buttonForm.addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -34,6 +38,7 @@ buttonForm.addEventListener("submit", (e) => {
     footerName.classList.add("hidden");
     footerBox.classList.remove("myFooter");
     getStartedDiv.classList.remove("container2")
+    
 
 
 
@@ -47,6 +52,7 @@ buttonForm.addEventListener("submit", (e) => {
     
     search.classList.add("container5")
     
+    
 
    
     
@@ -57,7 +63,9 @@ buttonForm.addEventListener("submit", (e) => {
     titleContainer.appendChild(h1);
     container.appendChild(searchForm);
     searchForm.appendChild(search);
-    searchForm.appendChild(filter);
+    searchForm.appendChild(filterContent)
+    filterContent.appendChild(filter);
+    backgroundOverlay.appendChild(content)
     
     
 });
@@ -66,6 +74,9 @@ buttonForm.addEventListener("submit", (e) => {
 filter.addEventListener("click", (e) => {
     e.preventDefault()
     console.log("filter")
+
+    filter.classList.toggle("filterOpen")
+    filterContent.classList.toggle("filterContent")
     
 })
 
@@ -76,7 +87,32 @@ searchForm.addEventListener("submit", (e) => {
         const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}`)
         const info = await response.json()
         console.log(info)
-        document.body.innerHTML = `<img src="${info.collection.items[0].links[0].href}" width="200px"><p>${info.collection.items[0].data[0].title}</p>${info.collection.items[0].data[0].date_created}<p>${info.collection.items[0].data[0].description}</p><p>${info.collection.items[0].data[0].photographer}</p>`
+        for (let i = 0; i < info.collection.items.length; i++) {
+            // if (Array.isArray()) {
+
+            console.log(info.collection.items[i].data[0].media_type)
+            // }
+
+            if (info.collection.items[i].data[0].media_type === "video") {
+                content.innerHTML += 
+                `<img src="${info.collection.items[i].links[0].href}" width="200px">
+                <p>${info.collection.items[i].data[0].title}</p>
+                <p>${info.collection.items[i].data[0].date_created}</p>
+                <p>${info.collection.items[i].data[0].description}</p>
+                <p>${info.collection.items[i].data[0].photographer}</p>`    
+            } else {
+                content.innerHTML += 
+                `<img src="${info.collection.items[i].links[0].href}" width="200px">
+                <p>${info.collection.items[i].data[0].title}</p>
+                <p>${info.collection.items[i].data[0].date_created}</p>
+                <p>${info.collection.items[i].data[0].description}</p>
+                <p>${info.collection.items[i].data[0].photographer}</p>`
+            }
+
+            
+            
+        }
+        
     };
     ImageAndVideoLibrary()
 })

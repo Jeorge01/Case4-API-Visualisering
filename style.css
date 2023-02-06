@@ -228,3 +228,30 @@ p {
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+
+.filterOpen {
+
+    width: 374px;
+    height: 45px;
+    text-shadow: none;
+    color: transparent;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: none;
+}
+
+.filterContent {
+    margin-top: 13px;
+    width: 374px;
+    height: 308px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    border-image-slice: 1;
+    
+    background-color: rgba(50, 50, 50, 0.5);
+    border: double 5px transparent;
+}
