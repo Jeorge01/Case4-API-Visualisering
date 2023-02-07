@@ -18,6 +18,7 @@ const getStartedDiv = document.querySelector(".container2")
 
 const filter = document.createElement("button");
 filter.type = "button"
+filter.textContent = "Filter"
 const search = document.createElement("input");
 search.classList.add("search")
 const searchForm = document.createElement("form");
@@ -27,7 +28,7 @@ const year_start = document.createElement("input")
 year_start.classList.add("year_start")
 year_start.classList.add("hidden")
 year_start.type = "number"
-year_start.value = 0
+year_start.value = 1
 const year_end = document.createElement("input")
 year_end.classList.add("year_end")
 year_end.classList.add("hidden")
@@ -61,22 +62,25 @@ buttonForm.addEventListener("submit", (e) => {
     
     search.classList.add("container5")
     filter.classList.add("filter")
+    filter.classList.add("gradient-border")
+    
+    
     
 
    
     
     
     
-    backgroundOverlay.appendChild(container)
+    document.body.appendChild(container)
     container.appendChild(titleContainer)
     titleContainer.appendChild(h1);
     container.appendChild(searchForm);
     searchForm.appendChild(search);
-    searchForm.appendChild(filterContent)
+    container.appendChild(filterContent)
     filterContent.appendChild(filter);
-    backgroundOverlay.appendChild(content)
-    // filterContent.appendChild(year_start)      ????????????????????
-    // filterContent.appendChild(year_end)
+    document.body.appendChild(content)
+    filterContent.appendChild(year_start)
+    filterContent.appendChild(year_end)
 });
 
 
@@ -88,22 +92,28 @@ filter.addEventListener("click", (e) => {
     filterContent.classList.toggle("filterContent")
     year_start.classList.toggle("hidden")
     year_end.classList.toggle("hidden")
+    filterContent.classList.toggle("gradient-border")
+    filter.classList.toggle("no-before")
     
 })
 
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
+    console.log("hej")
+
     async function ImageAndVideoLibrary() {
-        const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}`)
+        const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
+    .value}`)
         const info = await response.json()
         console.log(info)
         for (let i = 0; i < info.collection.items.length; i++) {
-            // if (Array.isArray()) {
+            if (Array.isArray()) {
 
             console.log(info.collection.items[i].data[0].media_type)
-            // }
+            }
 
+            //denna ifsats är till för att den ska ändra innerHTML om det är en bild eller en video
             if (info.collection.items[i].data[0].media_type === "video") {
                 content.innerHTML += 
                 `<img src="${info.collection.items[i].links[0].href}" width="200px">

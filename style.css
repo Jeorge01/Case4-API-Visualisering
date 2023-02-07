@@ -35,6 +35,7 @@ a {
 }
 
 .container {
+    
     display: flex;
     justify-content: center;
 
@@ -53,24 +54,36 @@ a {
 
 
 
-.backgroundoverlay::before {
+/* .backgroundoverlay::before {
+    z-index: 1;
+    
+    background-repeat: no-repeat;
     content: "";
     position: absolute;
     height: 100vh;
     width: 100%;
 
 
-    background: url(Images/low-angle-shot-mesmerizing-starry-sky.jpg);
-    background-size: cover;
-    background-position: top center;
+    
 
-    opacity: 25%;
-}
+    opacity: 75%;
+} */
 
 body {
-    height: 100vh;
+    
+    
+    height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, #0A0811 0%, #1E183A 48.96%, #231C4B 100%);
+    /* background:  */
+    
+    background-image: url(Images/Group\ 2.jpg);
+    /* background:  */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* background-blend-mode: screen; */
+    
+    background-size: cover;
+    background-position: top center;
 
 
 
@@ -162,11 +175,12 @@ p {
 }
 
 .search {
+    margin-bottom: 13px;
+    position: relative;
     margin-top: 20px;
     width: 374px;
     height: 54px;
-    left: 20px;
-    top: 136px;
+
 
     background: rgba(137, 19, 255, 0.08);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -174,35 +188,66 @@ p {
     color: white;
 
     border-style: none;
+
+    padding: 1px;
+    border: double 1px transparent;
     
+    background-image: linear-gradient(#0f081c, #0f081c),
+    linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 20px;
+    
+
 }
 
 .filter {
-    margin-top: 13px;
-    /* position: relative; */
+    /* margin-top: 13px; */
+    position: relative;
     box-sizing: border-box;
 
-    border: double 5px transparent;
+    border: none;
     /* background-image: linear-gradient(#8913FF 8%, #8913FF 8%),
     linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);;
     background-origin: border-box;
     background-clip: content-box, border-box; */
 
-    border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
-    border-image-slice: 1;
-    
-    background-color: rgba(50, 50, 50, 0.5);
+    /* border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%); */
+    /* border-image-slice: 1; */
 
-    width: 124px;
+    background: rgba(137, 19, 255, 0.08);
+
+    padding: 20px 40px;
+    color: white;
+
+    /* width: 124px;
     height: 45px;
     left: 20px;
-    top: 203px;
-    
+    top: 203px; */
+
 
 
     /* background: rgba(137, 19, 255, 0.08); */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+
+
+
+}
+
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
 
 .filter::before {
@@ -238,25 +283,40 @@ p {
     color: transparent;
     background-color: transparent;
     border: transparent;
-    border-radius: 20px 20px 0px 0px;
+    
     box-shadow: none;
 }
 
 .filterContent {
-    margin-top: 13px;
+    position: relative;
+    /* margin-top: 13px; */
     width: 374px;
     height: 308px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 
-    border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
-    border-image-slice: 1;
-    
+    /* border-image-source: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%); */
+    /* border-image-slice: 1; */
+
     background-color: rgba(137, 19, 255, 0.08);
-    border: double 5px transparent;
+    /* border: double 5px transparent; */
 }
 
 .content {
     display: flex;
     justify-content: center;
+    z-index: 3;
+    position: relative;
+}
+
+.filterOpen::before {
+    content: none;
+}
+
+.year_start {
+    position: relative;
+}
+
+.year_end {
+    position: relative;
 }
