@@ -26,6 +26,7 @@ filter.type = "button";
 // filter.textContent = "Filter";
 const search = document.createElement("input");
 search.classList.add("search");
+search.placeholder = "Browse between APIs...";
 const searchForm = document.createElement("form");
 searchForm.classList.add("searchForm");
 const containerForContent = document.createElement("div");
@@ -36,6 +37,24 @@ const containerForFilterContainer = document.createElement("div");
 containerForFilterContainer.classList.add("containerForFilterContainer");
 const filterContent = document.createElement("div");
 filterContent.classList.add("filterContainer");
+const filterLine = document.createElement("div");
+filterLine.classList.add("filterLine");
+filterLine.classList.add("hidden");
+const yearFilterContainer = document.createElement("div");
+yearFilterContainer.classList.add("yearFilterContainer")
+
+const year_start_container = document.createElement("div");
+year_start_container.classList.add("year_start_container");
+const year_end_container = document.createElement("div");
+year_end_container.classList.add("year_end_container");
+const fromText = document.createElement("p");
+fromText.classList.add("fromText");
+fromText.classList.add("hidden")
+fromText.textContent = "From";
+const toText = document.createElement("p");
+toText.classList.add("toText");
+toText.classList.add("hidden")
+toText.textContent = "To";
 const year_start = document.createElement("input");
 year_start.classList.add("year_start");
 year_start.classList.add("hidden");
@@ -45,7 +64,7 @@ const year_end = document.createElement("input");
 year_end.classList.add("year_end");
 year_end.classList.add("hidden");
 year_end.type = "number";
-year_end.value = "2023";
+year_end.value = 2023;
 
 
 buttonForm.addEventListener("submit", (e) => {
@@ -102,8 +121,14 @@ buttonForm.addEventListener("submit", (e) => {
     filterContent.appendChild(filter);
     document.body.appendChild(containerForContent);
     containerForContent.appendChild(content);
-    filterContent.appendChild(year_start);
-    filterContent.appendChild(year_end);
+    filterContent.appendChild(filterLine);
+    filterContent.appendChild(yearFilterContainer);
+    yearFilterContainer.appendChild(year_start_container);
+    yearFilterContainer.appendChild(year_end_container);
+    year_start_container.appendChild(fromText);
+    year_end_container.appendChild(toText)    
+    year_start_container.appendChild(year_start);
+    year_end_container.appendChild(year_end);
 });
 
 
@@ -113,10 +138,13 @@ filter.addEventListener("click", (e) => {
 
     filter.classList.toggle("filterOpen");
     filterContent.classList.toggle("filterContent");
+    fromText.classList.toggle("hidden");
+    toText.classList.toggle("hidden");
     year_start.classList.toggle("hidden");
     year_end.classList.toggle("hidden");
     filterContent.classList.toggle("gradient-border");
     filter.classList.toggle("no-before");
+    filterLine.classList.toggle("hidden");
     
 });
 

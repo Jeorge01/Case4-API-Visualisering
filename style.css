@@ -36,7 +36,7 @@ a {
 
 .mulish {
     font-family: 'Mulish';
-    
+
 }
 
 .hidden {
@@ -45,7 +45,7 @@ a {
 }
 
 .container {
-    
+
     display: flex;
     justify-content: center;
 
@@ -80,18 +80,18 @@ a {
 } */
 
 body {
-    
-    
+
+
     height: 100%;
     width: 100%;
     /* background:  */
-    
+
     background-image: url(Images/Group\ 2.jpg);
     /* background:  */
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* background-blend-mode: screen; */
-    
+
     background-size: cover;
     background-position: top center;
 
@@ -191,8 +191,8 @@ p {
     background: rgba(137, 19, 255, 0.08);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-   
-   
+
+
     color: white;
     font-family: 'Lalezar', sans-serif;
     font-size: 20px;
@@ -203,15 +203,19 @@ p {
 
     /* padding: 1px; */
     /* border: double 1px transparent; */
-    
+
     /* background-image: linear-gradient(#0f081c, #0f081c), */
     /* linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%); */
 
     /* background-origin: border-box; */
     /* background-clip: padding-box, border-box; */
     border-radius: 20px;
-    
 
+
+}
+
+.search::-webkit-input-placeholder {
+    color: #8C7BA3;
 }
 
 .filter {
@@ -271,10 +275,10 @@ p {
 
 .logo {
     margin-top: 50px;
-    
+
     width: 282px;
     height: 96px;
-    
+
     padding: 20px;
     font-family: 'My Soul';
     font-style: normal;
@@ -294,12 +298,12 @@ p {
 .filterOpen {
 
     width: 374px;
-    height: 45px;
+    height: 40px;
     text-shadow: none;
     color: transparent;
     background-color: transparent;
     border: transparent;
-    
+
     box-shadow: none;
 }
 
@@ -316,6 +320,13 @@ p {
 
     background-color: rgba(137, 19, 255, 0.08);
     /* border: double 5px transparent; */
+}
+
+.filterLine {
+    background: linear-gradient(90deg, rgba(83, 61, 144, 0) 0%, rgba(83, 61, 145, 0.494792) 48.96%, rgba(83, 61, 144, 0) 100%);
+    width: 334px;
+    height: 2px;
+    margin-bottom: 10px;
 }
 
 .content {
@@ -494,12 +505,12 @@ p {
     height: 54px;
     background: rgba(137, 19, 255, 0.08);
     border-radius: 20px;
-    
+
 
 }
 
 .searchForm::before {
-    
+
 
 
     content: "";
@@ -546,4 +557,75 @@ p {
     letter-spacing: 1px;
     margin-top: 7px;
     margin-left: 50px;
+}
+
+.yearFilterContainer {
+    display: flex;
+    
+}
+
+
+input[type="number"] {
+    padding-right: 5px;
+    padding-left: 20px;
+    position: relative;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+
+    background: rgba(137, 19, 255, 0.08);
+
+    width: 102px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Lalezar', sans-serif;
+    /* padding: 20px 40px; */
+    color: white;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+
+    width: 115px;
+
+}
+
+input[type="number"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.year_start_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    
+}
+
+.year_start_container p {
+    font-family: 'Lalezar', sans-serif;
+    margin-left: 40px;
+    
+}
+
+.year_end_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    
+}
+
+.year_end_container p {
+    font-family: 'Lalezar', sans-serif;
+    margin-left: 50px;
+    
 }
