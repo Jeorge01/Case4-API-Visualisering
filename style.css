@@ -262,19 +262,21 @@ p {
 
 .logo {
     margin-top: 50px;
-    /* flex-direction: row; */
-    width: 201px;
-    height: 66px;
-    left: 107px;
-    top: 50px;
-
+    
+    width: 325px;
+    height: 96px;
+    
+    padding: 20px;
     font-family: 'My Soul';
     font-style: normal;
     font-weight: 400;
-    font-size: 50px;
+    font-size: 70px;
     line-height: 66px;
 
     color: #201B3D;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0.05em transparent;
 
     text-shadow: 0px 4px 4px rgba(137, 19, 255, 0.08);
 }
