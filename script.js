@@ -22,9 +22,14 @@ filter.textContent = "Filter"
 const search = document.createElement("input");
 search.classList.add("search")
 const searchForm = document.createElement("form");
+const containerForContent = document.createElement("div")
+containerForContent.classList.add("containerForContent")
 const content = document.createElement("div")
 content.classList.add("contentBox")
+const containerForFilterContainer = document.createElement("div")
+containerForFilterContainer.classList.add("containerForFilterContainer")
 const filterContent = document.createElement("div")
+filterContent.classList.add("filterContainer")
 const year_start = document.createElement("input")
 year_start.classList.add("year_start")
 year_start.classList.add("hidden")
@@ -60,8 +65,12 @@ buttonForm.addEventListener("submit", (e) => {
     h1.textContent = "Nasa Api";
     h1.classList.add("logo")
     const titleContainer = document.createElement("div")
+    titleContainer.classList.add("nasaTitleContainer")
+    const inputContainer = document.createElement("div")
+    inputContainer.classList.add("inputContainer")
+
     
-    search.classList.add("container5")
+    
     filter.classList.add("filter")
     filter.classList.add("gradient-border")
     
@@ -75,11 +84,14 @@ buttonForm.addEventListener("submit", (e) => {
     document.body.appendChild(container)
     container.appendChild(titleContainer)
     titleContainer.appendChild(h1);
-    container.appendChild(searchForm);
+    container.appendChild(inputContainer)
+    inputContainer.appendChild(searchForm);
     searchForm.appendChild(search);
-    container.appendChild(filterContent)
+    container.appendChild(containerForFilterContainer)
+    containerForFilterContainer.appendChild(filterContent)
     filterContent.appendChild(filter);
-    document.body.appendChild(content)
+    document.body.appendChild(containerForContent)
+    containerForContent.appendChild(content)
     filterContent.appendChild(year_start)
     filterContent.appendChild(year_end)
 });
@@ -119,19 +131,19 @@ searchForm.addEventListener("submit", (e) => {
                 content.innerHTML += 
                 `<div class="contentContainer"><div class="contentCard1">
                 <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <p class="title">${info.collection.items[i].data[0].title}</p>
-                <p class="date">${info.collection.items[i].data[0].date_created}</p>
-                <p class="description">${info.collection.items[i].data[0].description}</p>
-                <p class="photographer">${info.collection.items[i].data[0].photographer}</p></div></div>`    
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
+                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                <p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div>`    
             } else {
                 console.log("odd")
                 content.innerHTML += 
                 `<div class="contentContainer"><div class="contentCard2">
                 <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <p class="title">${info.collection.items[i].data[0].title}</p>
-                <p class="date">${info.collection.items[i].data[0].date_created}</p>
-                <p class="description">${info.collection.items[i].data[0].description}</p>
-                <p class="photographer">${info.collection.items[i].data[0].photographer}</p></div></div>` 
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
+                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                <p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div>` 
             }
             // console.log(itemNumber)
             

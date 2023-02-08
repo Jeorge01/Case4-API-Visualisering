@@ -1,5 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/lalezar');
 @import url('https://fonts.googleapis.com/css2?family=My+Soul&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,200&display=swap');
 
 ion-icon {
     font-size: 24px;
@@ -28,6 +30,14 @@ a {
     font-family: 'My Soul', cursive;
 }
 
+.openSans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mulish {
+    font-family: 'Mulish';
+    
+}
 
 .hidden {
     display: none;
@@ -164,14 +174,9 @@ p {
 
 .container4 {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.container5 {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
 }
 
 .search {
@@ -327,8 +332,10 @@ p {
 
 .contentCard2 {
 
+    position: relative;
     /* display: flex; */
     background: linear-gradient(180deg, #0A0811 0%, #1E183A 48.96%, #231C4B 100%);
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     width: 414px;
     height: 539px;
@@ -336,9 +343,104 @@ p {
 }
 
 .contentCard2 img {
-
+    box-shadow: 0px 4px 15px 8px rgba(0, 0, 0, 0.08);
     width: 374px;
+    aspect-ratio: 1.77;
+    object-fit: cover;
     border-radius: 20px;
     margin: 20px;
 
 }
+
+.contentCard1 {
+
+    position: relative;
+    /* display: flex; */
+    background: linear-gradient(180deg, #26213C 0%, #574F93 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    width: 414px;
+    height: 539px;
+
+}
+
+.contentCard1 img {
+    box-shadow: 0px 4px 15px 8px rgba(0, 0, 0, 0.08);
+    width: 374px;
+    aspect-ratio: 1.77;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 20px;
+
+}
+
+.title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+}
+
+.description {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 130%;
+    /* or 14px */
+
+    letter-spacing: 0.02em;
+    margin-top: 8px;
+}
+
+.date {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 240px;
+
+    font-style: italic;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 13px;
+}
+
+.photographer {
+    margin-top: 20px;
+    margin-left: 250px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.cardText {
+    margin: 0px 28px;
+}
+
+.nasaTitleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+
+}
+
+.filterContainer {
+    width: 374px;
+}
+
+.containerForFilterContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.containerForContent {
+    display: flex;
+    justify-content: center;
+}
+
