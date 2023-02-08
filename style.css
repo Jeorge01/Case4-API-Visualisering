@@ -320,3 +320,25 @@ p {
 .year_end {
     position: relative;
 }
+
+.contentBox {
+    margin-top: 13px;
+}
+
+.contentCard2 {
+
+    /* display: flex; */
+    background: linear-gradient(180deg, #0A0811 0%, #1E183A 48.96%, #231C4B 100%);
+    border-radius: 30px;
+    width: 414px;
+    height: 539px;
+
+}
+
+.contentCard2 img {
+
+    width: 374px;
+    border-radius: 20px;
+    margin: 20px;
+
+}

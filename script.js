@@ -23,6 +23,7 @@ const search = document.createElement("input");
 search.classList.add("search")
 const searchForm = document.createElement("form");
 const content = document.createElement("div")
+content.classList.add("contentBox")
 const filterContent = document.createElement("div")
 const year_start = document.createElement("input")
 year_start.classList.add("year_start")
@@ -108,28 +109,31 @@ searchForm.addEventListener("submit", (e) => {
         const info = await response.json()
         console.log(info)
         for (let i = 0; i < info.collection.items.length; i++) {
-            if (Array.isArray()) {
 
-            console.log(info.collection.items[i].data[0].media_type)
-            }
-
+            let itemNumber = info.collection.items.map(NumberMaker)
+            
+            // console.log(info.collection.items[i].data[0].media_type)
             //denna ifsats är till för att den ska ändra innerHTML om det är en bild eller en video
-            if (info.collection.items[i].data[0].media_type === "video") {
+            if (info.collection.items % 2 == 0) {
+                console.log("even")
                 content.innerHTML += 
-                `<img src="${info.collection.items[i].links[0].href}" width="200px">
+                `<div class="contentContainer"><div class="contentCard1">
+                <img src="${info.collection.items[i].links[0].href}" width="200px">
                 <p>${info.collection.items[i].data[0].title}</p>
                 <p>${info.collection.items[i].data[0].date_created}</p>
                 <p>${info.collection.items[i].data[0].description}</p>
-                <p>${info.collection.items[i].data[0].photographer}</p>`    
+                <p>${info.collection.items[i].data[0].photographer}</p></div></div>`    
             } else {
+                console.log("odd")
                 content.innerHTML += 
-                `<img src="${info.collection.items[i].links[0].href}" width="200px">
+                `<div class="contentContainer"><div class="contentCard2">
+                <img src="${info.collection.items[i].links[0].href}" width="200px">
                 <p>${info.collection.items[i].data[0].title}</p>
                 <p>${info.collection.items[i].data[0].date_created}</p>
                 <p>${info.collection.items[i].data[0].description}</p>
-                <p>${info.collection.items[i].data[0].photographer}</p>`
+                <p>${info.collection.items[i].data[0].photographer}</p></div></div>` 
             }
-
+            console.log(itemNumber)
             
             
         }
@@ -137,7 +141,16 @@ searchForm.addEventListener("submit", (e) => {
     };
     ImageAndVideoLibrary()
     content.innerHTML = "";
-})
+});
+
+
+function NumberMaker(str) {
+    return parseInt(str)
+}
+
+
+
+    // let filteredArray = info.collection.items.filter(item => item.data[0].media_type === "image")
 
 
 // keySubmit.addEventListener("click", (e) => {
