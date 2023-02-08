@@ -172,7 +172,7 @@ p {
     margin-bottom: 20px;
 }
 
-.container4 {
+.input {
     position: relative;
     /* display: flex; */
     /* flex-direction: column; */
@@ -180,28 +180,35 @@ p {
 }
 
 .search {
-    margin-bottom: 13px;
-    position: relative;
-    margin-top: 20px;
-    width: 374px;
-    height: 54px;
+    /* margin-bottom: 13px; */
+    /* position: relative; */
+    /* margin-top: 20px; */
+    width: 100%;
+    height: 100%;
 
+    padding-left: 55px;
 
     background: rgba(137, 19, 255, 0.08);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+   
+   
     color: white;
+    font-family: 'Lalezar', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
 
     border-style: none;
+    outline: none;
 
-    padding: 1px;
-    border: double 1px transparent;
+    /* padding: 1px; */
+    /* border: double 1px transparent; */
     
-    background-image: linear-gradient(#0f081c, #0f081c),
-    linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    /* background-image: linear-gradient(#0f081c, #0f081c), */
+    /* linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%); */
 
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    /* background-origin: border-box; */
+    /* background-clip: padding-box, border-box; */
     border-radius: 20px;
     
 
@@ -237,6 +244,8 @@ p {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 21px;
 
+    width: 115px;
+
 
 
 }
@@ -263,14 +272,14 @@ p {
 .logo {
     margin-top: 50px;
     
-    width: 325px;
+    width: 282px;
     height: 96px;
     
     padding: 20px;
     font-family: 'My Soul';
     font-style: normal;
     font-weight: 400;
-    font-size: 70px;
+    font-size: 60px;
     line-height: 66px;
 
     color: #201B3D;
@@ -335,12 +344,11 @@ p {
 .contentCard2 {
 
     position: relative;
-    /* display: flex; */
     background: linear-gradient(180deg, #0A0811 0%, #1E183A 48.96%, #231C4B 100%);
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     width: 414px;
-    height: 539px;
+    /* height: 539px; */
 
 }
 
@@ -357,13 +365,13 @@ p {
 .contentCard1 {
 
     position: relative;
-    /* display: flex; */
-    background: linear-gradient(180deg, #26213C 0%, #574F93 100%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
+    /* Tills jag har fixat korten */
+    /* background: linear-gradient(180deg, #26213C 0%, #574F93 100%); */
+    /* border: 1px solid rgba(255, 255, 255, 0.25); */
+    /* box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15); */
     border-radius: 30px;
     width: 414px;
-    height: 539px;
+    /* height: 539px; */
 
 }
 
@@ -378,6 +386,7 @@ p {
 }
 
 .title {
+    width: 250px;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
@@ -398,7 +407,7 @@ p {
 
 .date {
     position: absolute;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 240px;
 
     font-style: italic;
@@ -408,13 +417,19 @@ p {
 }
 
 .photographer {
-    margin-top: 20px;
-    margin-left: 250px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* margin-left: 220px; */
 
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 19px;
+}
+
+.photographerContainer {
+    display: flex;
+    justify-content: right;
 }
 
 .cardText {
@@ -437,6 +452,7 @@ p {
 }
 
 .containerForFilterContainer {
+    position: relative;
     display: flex;
     justify-content: center;
 }
@@ -446,3 +462,88 @@ p {
     justify-content: center;
 }
 
+.searchForm {
+    /* margin-bottom: 13px;
+    position: relative;
+    margin-top: 20px;
+    width: 374px;
+    height: 54px;
+
+
+    background: rgba(137, 19, 255, 0.08);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: white;
+
+    border-style: none;
+
+    padding: 1px;
+    border: double 1px transparent;
+    
+    background-image: linear-gradient(#150b27, #170d2b),
+    linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 20px; */
+
+    position: relative;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    width: 374px;
+    height: 54px;
+    background: rgba(137, 19, 255, 0.08);
+    border-radius: 20px;
+    
+
+}
+
+.searchForm::before {
+    
+
+
+    content: "";
+    position: absolute;
+    /* inset: 0; */
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: 20px;
+}
+
+
+.searchIcon {
+    position: absolute;
+    font-size: 37px;
+    top: 8px;
+    left: 8px;
+}
+
+
+.filterIcon {
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 7px;
+}
+
+.optionsIcon {
+    margin-right: 150px;
+}
+
+.filterText {
+    position: absolute;
+    color: white;
+    font-family: 'Lalezar', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    letter-spacing: 1px;
+    margin-top: 7px;
+    margin-left: 50px;
+}

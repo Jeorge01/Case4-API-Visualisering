@@ -14,32 +14,38 @@ const githubEl = document.querySelector(".githubEl");
 const PoweredByNASAApi = document.querySelector(".PBNA");
 const buttonForm = document.querySelector(".buttonForm");
 const startBtn = document.querySelector(".get_started");
-const getStartedDiv = document.querySelector(".container2")
+const getStartedDiv = document.querySelector(".container2");
 
+const filterIcon = document.createElement("div");
+filterIcon.classList.add("filterIcon")
+const filterText = document.createElement("div")
+filterText.classList.add("filterText")
+filterText.textContent = "Filter";
 const filter = document.createElement("button");
-filter.type = "button"
-filter.textContent = "Filter"
+filter.type = "button";
+// filter.textContent = "Filter";
 const search = document.createElement("input");
-search.classList.add("search")
+search.classList.add("search");
 const searchForm = document.createElement("form");
-const containerForContent = document.createElement("div")
-containerForContent.classList.add("containerForContent")
-const content = document.createElement("div")
-content.classList.add("contentBox")
-const containerForFilterContainer = document.createElement("div")
-containerForFilterContainer.classList.add("containerForFilterContainer")
-const filterContent = document.createElement("div")
-filterContent.classList.add("filterContainer")
-const year_start = document.createElement("input")
-year_start.classList.add("year_start")
-year_start.classList.add("hidden")
-year_start.type = "number"
-year_start.value = 1
-const year_end = document.createElement("input")
-year_end.classList.add("year_end")
-year_end.classList.add("hidden")
-year_end.type = "number"
-year_end.value = "2023"
+searchForm.classList.add("searchForm");
+const containerForContent = document.createElement("div");
+containerForContent.classList.add("containerForContent");
+const content = document.createElement("div");
+content.classList.add("contentBox");
+const containerForFilterContainer = document.createElement("div");
+containerForFilterContainer.classList.add("containerForFilterContainer");
+const filterContent = document.createElement("div");
+filterContent.classList.add("filterContainer");
+const year_start = document.createElement("input");
+year_start.classList.add("year_start");
+year_start.classList.add("hidden");
+year_start.type = "number";
+year_start.value = 1;
+const year_end = document.createElement("input");
+year_end.classList.add("year_end");
+year_end.classList.add("hidden");
+year_end.type = "number";
+year_end.value = "2023";
 
 
 buttonForm.addEventListener("submit", (e) => {
@@ -53,26 +59,26 @@ buttonForm.addEventListener("submit", (e) => {
     github.classList.add("hidden");
     footerName.classList.add("hidden");
     footerBox.classList.remove("myFooter");
-    getStartedDiv.classList.remove("container2")
+    getStartedDiv.classList.remove("container2");
     
 
 
 
 
-    const container = document.createElement("div")
-    container.classList.add("container4")
-    const h1 = document.createElement("h1")
+    const container = document.createElement("div");
+    container.classList.add("input");
+    const h1 = document.createElement("h1");
     h1.textContent = "Nasa Api";
-    h1.classList.add("logo")
-    const titleContainer = document.createElement("div")
-    titleContainer.classList.add("nasaTitleContainer")
-    const inputContainer = document.createElement("div")
-    inputContainer.classList.add("inputContainer")
+    h1.classList.add("logo");
+    const titleContainer = document.createElement("div");
+    titleContainer.classList.add("nasaTitleContainer");
+    const inputContainer = document.createElement("div");
+    inputContainer.classList.add("inputContainer");
 
     
     
-    filter.classList.add("filter")
-    filter.classList.add("gradient-border")
+    filter.classList.add("filter");
+    filter.classList.add("gradient-border");
     
     
     
@@ -81,39 +87,43 @@ buttonForm.addEventListener("submit", (e) => {
     
     
     
-    document.body.appendChild(container)
-    container.appendChild(titleContainer)
+    document.body.appendChild(container);
+    container.appendChild(titleContainer);
     titleContainer.appendChild(h1);
-    container.appendChild(inputContainer)
+    container.appendChild(inputContainer);
     inputContainer.appendChild(searchForm);
+    searchForm.innerHTML += `<ion-icon name="search" class="searchIcon"></ion-icon>`;
     searchForm.appendChild(search);
-    container.appendChild(containerForFilterContainer)
-    containerForFilterContainer.appendChild(filterContent)
+    container.appendChild(containerForFilterContainer);
+    filterContent.appendChild(filterIcon);
+    filterContent.appendChild(filterText);
+    filterIcon.innerHTML += `<ion-icon name="options" class="optionsIcon"></ion-icon>`
+    containerForFilterContainer.appendChild(filterContent);
     filterContent.appendChild(filter);
-    document.body.appendChild(containerForContent)
-    containerForContent.appendChild(content)
-    filterContent.appendChild(year_start)
-    filterContent.appendChild(year_end)
+    document.body.appendChild(containerForContent);
+    containerForContent.appendChild(content);
+    filterContent.appendChild(year_start);
+    filterContent.appendChild(year_end);
 });
 
 
 filter.addEventListener("click", (e) => {
-    e.preventDefault()
-    console.log("filter")
+    e.preventDefault();
+    console.log("filter");
 
-    filter.classList.toggle("filterOpen")
-    filterContent.classList.toggle("filterContent")
-    year_start.classList.toggle("hidden")
-    year_end.classList.toggle("hidden")
-    filterContent.classList.toggle("gradient-border")
-    filter.classList.toggle("no-before")
+    filter.classList.toggle("filterOpen");
+    filterContent.classList.toggle("filterContent");
+    year_start.classList.toggle("hidden");
+    year_end.classList.toggle("hidden");
+    filterContent.classList.toggle("gradient-border");
+    filter.classList.toggle("no-before");
     
-})
+});
 
 searchForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    console.log("hej")
+    console.log("hej");
 
     async function ImageAndVideoLibrary() {
         const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
@@ -134,7 +144,7 @@ searchForm.addEventListener("submit", (e) => {
                 <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
                 <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
                 <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div>`    
+                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`    
             } else {
                 console.log("odd")
                 content.innerHTML += 
@@ -143,7 +153,7 @@ searchForm.addEventListener("submit", (e) => {
                 <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
                 <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
                 <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div>` 
+                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>` 
             }
             // console.log(itemNumber)
             
