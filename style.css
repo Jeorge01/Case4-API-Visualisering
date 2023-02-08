@@ -311,7 +311,7 @@ p {
     position: relative;
     /* margin-top: 13px; */
     width: 374px;
-    height: 308px;
+    height: 140px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 
@@ -561,13 +561,13 @@ p {
 
 .yearFilterContainer {
     display: flex;
-    
+
 }
 
 
 input[type="number"] {
     padding-right: 5px;
-    padding-left: 20px;
+    padding-left: 6px;
     position: relative;
     box-sizing: border-box;
 
@@ -608,24 +608,64 @@ input[type="number"]::before {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    
+
 }
 
 .year_start_container p {
     font-family: 'Lalezar', sans-serif;
     margin-left: 40px;
-    
+
 }
 
 .year_end_container {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    
+
 }
 
 .year_end_container p {
     font-family: 'Lalezar', sans-serif;
     margin-left: 50px;
+
+}
+
+.doASearchIcon {
+    display: flex;
+    justify-content: center;
+
     
+
+    
+}
+
+.doASearchIcon ion-icon {
+    color: rgba(140, 123, 163, 0.5);
+    font-size: 100px;
+}
+
+.doASearchText {
+    display: flex;
+    justify-content: center;
+}
+
+.doASearchText p {
+    width: 294px;
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 47px;
+    color: rgba(140, 123, 163, 0.5);
+}
+
+.doASearch {
+    height: 100%;
+    margin-top: 400px;
+    position: absolute;
+}
+
+.doASearchContainer {
+    display: flex;
+    justify-content: center;
 }

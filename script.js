@@ -26,11 +26,21 @@ filter.type = "button";
 // filter.textContent = "Filter";
 const search = document.createElement("input");
 search.classList.add("search");
-search.placeholder = "Browse between APIs...";
+search.placeholder = "Search for information...";
 const searchForm = document.createElement("form");
 searchForm.classList.add("searchForm");
 const containerForContent = document.createElement("div");
 containerForContent.classList.add("containerForContent");
+const doASearchContainer = document.createElement("div");
+doASearchContainer.classList.add("doASearchContainer");
+const doASearch = document.createElement("div");
+doASearch.classList.add("doASearch");
+const doASearchIcon = document.createElement("div");
+doASearchIcon.classList.add("doASearchIcon");
+doASearchIcon.innerHTML = `<ion-icon name="rocket-outline"></ion-icon>`
+const doASearchText = document.createElement("div");
+doASearchText.classList.add("doASearchText");
+doASearchText.innerHTML = `<p>Ready to learn about space?</p>`
 const content = document.createElement("div");
 content.classList.add("contentBox");
 const containerForFilterContainer = document.createElement("div");
@@ -104,8 +114,8 @@ buttonForm.addEventListener("submit", (e) => {
 
    
     
-    
-    
+    document.body.appendChild(doASearchContainer);
+    doASearchContainer.appendChild(doASearch);
     document.body.appendChild(container);
     container.appendChild(titleContainer);
     titleContainer.appendChild(h1);
@@ -119,8 +129,12 @@ buttonForm.addEventListener("submit", (e) => {
     filterIcon.innerHTML += `<ion-icon name="options" class="optionsIcon"></ion-icon>`
     containerForFilterContainer.appendChild(filterContent);
     filterContent.appendChild(filter);
+    
     document.body.appendChild(containerForContent);
     containerForContent.appendChild(content);
+    
+    doASearch.appendChild(doASearchIcon);
+    doASearch.appendChild(doASearchText);
     filterContent.appendChild(filterLine);
     filterContent.appendChild(yearFilterContainer);
     yearFilterContainer.appendChild(year_start_container);
@@ -151,7 +165,8 @@ filter.addEventListener("click", (e) => {
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    console.log("hej");
+    doASearch.classList.add("hidden")
+    // console.log("hej");
 
     async function ImageAndVideoLibrary() {
         const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
