@@ -397,7 +397,7 @@ p {
 }
 
 .title {
-    width: 250px;
+    width: 230px;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
@@ -419,7 +419,7 @@ p {
 .date {
     position: absolute;
     margin-top: 5px;
-    margin-left: 240px;
+    margin-left: 300px;
 
     font-style: italic;
     font-weight: 400;
@@ -660,8 +660,7 @@ input[type="number"]::before {
 }
 
 .doASearch {
-    height: 100%;
-    margin-top: 400px;
+    top: 400px;
     position: absolute;
 }
 

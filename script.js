@@ -76,6 +76,18 @@ year_end.classList.add("hidden");
 year_end.type = "number";
 year_end.value = 2023;
 
+const container = document.createElement("div");
+container.classList.add("input");
+const h1 = document.createElement("h1");
+h1.textContent = "Nasa Api";
+h1.classList.add("logo");
+const titleContainer = document.createElement("div");
+titleContainer.classList.add("nasaTitleContainer");
+const inputContainer = document.createElement("div");
+inputContainer.classList.add("inputContainer");
+filter.classList.add("filter");
+filter.classList.add("gradient-border");
+
 
 buttonForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -90,29 +102,6 @@ buttonForm.addEventListener("submit", (e) => {
     footerBox.classList.remove("myFooter");
     getStartedDiv.classList.remove("container2");
     
-
-
-
-
-    const container = document.createElement("div");
-    container.classList.add("input");
-    const h1 = document.createElement("h1");
-    h1.textContent = "Nasa Api";
-    h1.classList.add("logo");
-    const titleContainer = document.createElement("div");
-    titleContainer.classList.add("nasaTitleContainer");
-    const inputContainer = document.createElement("div");
-    inputContainer.classList.add("inputContainer");
-
-    
-    
-    filter.classList.add("filter");
-    filter.classList.add("gradient-border");
-    
-    
-    
-
-   
     
     document.body.appendChild(doASearchContainer);
     doASearchContainer.appendChild(doASearch);
@@ -129,10 +118,8 @@ buttonForm.addEventListener("submit", (e) => {
     filterIcon.innerHTML += `<ion-icon name="options" class="optionsIcon"></ion-icon>`
     containerForFilterContainer.appendChild(filterContent);
     filterContent.appendChild(filter);
-    
     document.body.appendChild(containerForContent);
     containerForContent.appendChild(content);
-    
     doASearch.appendChild(doASearchIcon);
     doASearch.appendChild(doASearchText);
     filterContent.appendChild(filterLine);
@@ -166,34 +153,36 @@ searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     doASearch.classList.add("hidden")
-    // console.log("hej");
+    
 
     async function ImageAndVideoLibrary() {
         const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
-    .value}`)
+        .value}`)
         const info = await response.json()
+
+        // for (let i = 0; i < info.collection.items.length; i++) {
+        //     const AtoZ = info.collection.items[i].data[0].title.sort();
+        //     console.log(AtoZ)
+        // }
+
+        
+        
         console.log(info)
         for (let i = 0; i < info.collection.items.length; i++) {
-
-            // let itemNumber = info.collection.items.map(NumberMaker)
-            
-            // console.log(info.collection.items[i].data[0].media_type)
-            //denna ifsats är till för att den ska ändra innerHTML om det är en bild eller en video
+ 
             if (i % 2 == 0) {
-                console.log("even")
                 content.innerHTML += 
                 `<div class="contentContainer"><div class="contentCard1">
                 <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0,10)}</p>
                 <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
                 <p class="description openSans">${info.collection.items[i].data[0].description}</p>
                 <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`    
             } else {
-                console.log("odd")
                 content.innerHTML += 
                 `<div class="contentContainer"><div class="contentCard2">
                 <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created}</p>
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0,10)}</p>
                 <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
                 <p class="description openSans">${info.collection.items[i].data[0].description}</p>
                 <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>` 
@@ -209,33 +198,6 @@ searchForm.addEventListener("submit", (e) => {
 });
 
 
-// function NumberMaker(str) {
-//     return parseInt(str)
-// }
-
-
-
-    // let filteredArray = info.collection.items.filter(item => item.data[0].media_type === "image")
-
-
-// keySubmit.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     APIKey = keyInput.value;
-
-//     console.log(APIKey)
-//     ImageAndVideoLibrary()
-// })
-
-
-//`https://images-api.nasa.gov/search?q=${search.value}`
-
-
-// `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${APIKey}`
-// `https://api.nasa.gov/planetary/apod?api_key=${APIKey}&count=10`
-// `https://images-api.nasa.gov/search?q=${search.value}`
-// `https://images-api.nasa.gov/asset/{nasa_id}`
-// `https://images-api.nasa.gov/metadata/{nasa_id}`
-// `https://images-api.nasa.gov/captions/{nasa_id}`
 
 
 
