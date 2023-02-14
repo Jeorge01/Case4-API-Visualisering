@@ -10,7 +10,6 @@ ion-icon {
     margin-right: 5px;
 }
 
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -311,7 +310,7 @@ p {
     position: relative;
     /* margin-top: 13px; */
     width: 374px;
-    height: 140px;
+    height: 340px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 
@@ -327,6 +326,7 @@ p {
     width: 334px;
     height: 2px;
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 .content {
@@ -460,6 +460,7 @@ p {
 
 .filterContainer {
     width: 374px;
+    backdrop-filter: blur(2px);
 }
 
 .containerForFilterContainer {
@@ -497,7 +498,7 @@ p {
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-radius: 20px; */
-
+    backdrop-filter: blur(2px);
     position: relative;
     margin-bottom: 13px;
     margin-top: 20px;
@@ -561,7 +562,7 @@ p {
 
 .yearFilterContainer {
     display: flex;
-
+    margin-bottom: 20px;
 }
 
 
@@ -634,9 +635,9 @@ input[type="number"]::before {
     display: flex;
     justify-content: center;
 
-    
 
-    
+
+
 }
 
 .doASearchIcon ion-icon {
@@ -667,4 +668,146 @@ input[type="number"]::before {
 .doASearchContainer {
     display: flex;
     justify-content: center;
+}
+
+.applyContainer {
+    display: flex;
+    margin-right: 20px;
+    position: fixed;
+    bottom: 0;
+    margin-left: 237px;
+    /* transform: translateX(-50%); */
+    margin-bottom: 20px;
+}
+
+.applyButton {
+    align-items: center;
+    position: relative;
+    color: white;
+    border: none;
+    font-size: 30px;
+    width: 117px;
+    height: 49px;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    /* button shine */
+
+    box-shadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.25), inset 0px 4px 6px rgba(255, 255, 255, 0.72), inset 0px 14px 14px rgba(255, 255, 255, 0.58);
+    border-radius: 50px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 39px;
+    text-align: center;
+}
+
+.loaderBackgroundBlur {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    z-index: 1;
+}
+
+.loaderContainer {
+    position: relative;
+    display: flex;
+
+}
+
+.activateLoader {
+    width: 100%;
+}
+
+.circle {
+    position: relative;
+    width: 229px;
+    height: 229px;
+    border-radius: 50%;
+    background: #eaeef0;
+    /* border: #eaeef0 solid 6px; */
+    box-shadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.25), inset 0px 4px 6px rgba(255, 255, 255, 0.72), inset 0px 14px 14px rgba(255, 255, 255, 0.58);
+    overflow: hidden;
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 10px 10px 20px rgb(255, 255, 255), inset -5px -5px 15px rgb(255 255 255);
+
+}
+
+.circle i {
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: linear-gradient(85.28deg, #80B5F3 0%, #7F74FF 19.79%, #A037E0 41.67%, #C55EC9 56.77%, #FF9DA3 76.04%, #FFC794 89.58%, #FFE7C2 100%);
+    backdrop-filter: blur(15px);
+    animation: animate 1s linear infinite;
+
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    inset: 40px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #0A0811 0%, #1E183A 48.96%, #231C4B 100%);
+    box-shadow: -8px -8px 25px rgb(18, 0, 53), 9px 8px 25px rgb(0 0 0 / 25%), inset 3px 3px 10px rgb(0 0 0 / 15%), inset -1px -1px 15px rgba(255, 255, 255, 0);
+
+
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(350deg);
+    }
+}
+
+.rocket {
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(206.31deg, #F8BA1B 0%, #CD775C 50.52%, #9F20A1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+
+    top: 60px;
+    left: 54px;
+
+}
+
+.rocket ion-icon {
+    font-size: 115px;
+
+}
+
+.loadingText {
+    position: absolute;
+    top: 242px;
+    left: 10px;
+
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 78px;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }

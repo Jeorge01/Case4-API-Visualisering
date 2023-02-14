@@ -4,6 +4,10 @@ const searchMars = "./SearchMars"
 const NasaIVL = "./NASAImageAndVideoLibrary.json";
 const MarsRP = "./MarsRoverPhotos.json";
 
+const loaderBackgroundBlur = document.querySelector(".loaderBackgroundBlur");
+const loaderIcons = document.querySelector(".loaderIcons");
+const loadingText = document.querySelector(".loadingText");
+
 const backgroundOverlay = document.querySelector(".backgroundoverlay");
 const footerName = document.querySelector(".footerName");
 const footerBox = document.querySelector(".myFooter");
@@ -87,11 +91,19 @@ const inputContainer = document.createElement("div");
 inputContainer.classList.add("inputContainer");
 filter.classList.add("filter");
 filter.classList.add("gradient-border");
+const applyContainer = document.createElement("div");
+applyContainer.classList.add("applyContainer");
+const applyButton = document.createElement("button");
+applyButton.classList.add("hidden");
+applyButton.classList.add("applyButton");
+applyButton.classList.add("Lalezar");
+applyButton.textContent = "Apply";
+applyButton.type = "button";
 
 
-buttonForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
+const catchedItems = [];
+
+function getStartedActions() {
     startBtn.classList.add("hidden");
     PoweredByNASAApi.classList.add("hidden");
     mailEl.classList.add("hidden");
@@ -102,7 +114,8 @@ buttonForm.addEventListener("submit", (e) => {
     footerBox.classList.remove("myFooter");
     getStartedDiv.classList.remove("container2");
     
-    
+
+
     document.body.appendChild(doASearchContainer);
     doASearchContainer.appendChild(doASearch);
     document.body.appendChild(container);
@@ -127,16 +140,14 @@ buttonForm.addEventListener("submit", (e) => {
     yearFilterContainer.appendChild(year_start_container);
     yearFilterContainer.appendChild(year_end_container);
     year_start_container.appendChild(fromText);
-    year_end_container.appendChild(toText)    
+    year_end_container.appendChild(toText)
     year_start_container.appendChild(year_start);
     year_end_container.appendChild(year_end);
-});
+    filterContent.appendChild(applyContainer);
+    applyContainer.appendChild(applyButton);
+}
 
-
-filter.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("filter");
-
+function filterToggle() {
     filter.classList.toggle("filterOpen");
     filterContent.classList.toggle("filterContent");
     fromText.classList.toggle("hidden");
@@ -146,56 +157,130 @@ filter.addEventListener("click", (e) => {
     filterContent.classList.toggle("gradient-border");
     filter.classList.toggle("no-before");
     filterLine.classList.toggle("hidden");
+    applyButton.classList.toggle("hidden");
+}
+
+function filterClose() {
+    filter.classList.remove("filterOpen");
+    filterContent.classList.remove("filterContent");
+    fromText.classList.add("hidden");
+    toText.classList.add("hidden");
+    year_start.classList.add("hidden");
+    year_end.classList.add("hidden");
+    filterContent.classList.remove("gradient-border");
+    filter.classList.add("no-before");
+    filterLine.classList.add("hidden");
+    applyButton.classList.add("hidden");
+}
+
+function renderCards() {
+    async function ImageAndVideoLibrary() {
+        const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
+            .value}`)
+        const info = await response.json()
+
+        for (let i = 0; i < info.collection.items.length; i++) {
+            if (info.collection.items[i].data[0].photographer === undefined) {
+                content.innerHTML +=
+                `<div class="contentContainer"><div class="contentCard1">
+                <img src="${info.collection.items[i].links[0].href}" width="200px">
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                <div class="photographerContainer"><p class="photographer Lalezar"></p></div></div></div></div>`
+            } else {
+                content.innerHTML +=
+                `<div class="contentContainer"><div class="contentCard1">
+                <img src="${info.collection.items[i].links[0].href}" width="200px">
+                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
+            }
+        }
+    };
+    ImageAndVideoLibrary();
+    content.innerHTML = "";
+
+}
+
+function showLoader() {
+    loaderIcons.classList.remove("hidden")
+    loadingText.classList.remove("hidden")
+    loaderBackgroundBlur.classList.add("activateLoader")
+
+    setTimeout(() => {
+        loaderIcons.classList.add("hidden")
+        loadingText.classList.add("hidden")
+        loaderBackgroundBlur.classList.remove("activateLoader")
+    }, 1000);
+
     
+}
+
+function searchForImages() {
+    doASearch.classList.add("hidden");
+    // async function ImageAndVideoLibrary() {
+    //     const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
+    //         .value}`)
+    //     const info = await response.json()
+
+    // catchedItems = info.collection.items;
+
+    // catchedItems = items;
+    renderCards();
+    showLoader();
+    
+
+    // console.log(info)
+    // for (let i = 0; i < info.collection.items.length; i++) {
+
+        // if (i % 2 == 0) {
+        //     content.innerHTML +=
+        //         `<div class="contentContainer"><div class="contentCard1">
+        //     <img src="${info.collection.items[i].links[0].href}" width="200px">
+        //     <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+        //     <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+        //     <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+        //     <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
+        // } else {
+        //     content.innerHTML +=
+        //         `<div class="contentContainer"><div class="contentCard2">
+        //     <img src="${info.collection.items[i].links[0].href}" width="200px">
+        //     <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+        //     <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+        //     <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+        //     <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
+        // };
+    // };
+    // };
+    // ImageAndVideoLibrary();
+    // content.innerHTML = "";
+};
+
+buttonForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    getStartedActions();
+});
+
+
+filter.addEventListener("click", (e) => {
+    e.preventDefault();
+    filterToggle();
 });
 
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    doASearch.classList.add("hidden")
-    
-
-    async function ImageAndVideoLibrary() {
-        const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
-        .value}`)
-        const info = await response.json()
-
-        // for (let i = 0; i < info.collection.items.length; i++) {
-        //     const AtoZ = info.collection.items[i].data[0].title.sort();
-        //     console.log(AtoZ)
-        // }
-
-        
-        
-        console.log(info)
-        for (let i = 0; i < info.collection.items.length; i++) {
- 
-            if (i % 2 == 0) {
-                content.innerHTML += 
-                `<div class="contentContainer"><div class="contentCard1">
-                <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0,10)}</p>
-                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`    
-            } else {
-                content.innerHTML += 
-                `<div class="contentContainer"><div class="contentCard2">
-                <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0,10)}</p>
-                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>` 
-            }
-            // console.log(itemNumber)
-            
-            
-        }
-        
-    };
-    ImageAndVideoLibrary()
-    content.innerHTML = "";
+    filterClose();
+    searchForImages();
 });
+
+applyButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    filterToggle();
+    searchForImages();
+
+})
 
 
 
