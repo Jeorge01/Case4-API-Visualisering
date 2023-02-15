@@ -704,7 +704,7 @@ input[type="number"]::before {
 }
 
 .loaderBackgroundBlur {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -714,6 +714,8 @@ input[type="number"]::before {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(15px);
     z-index: 1;
+
+    
 }
 
 .loaderContainer {
@@ -780,9 +782,7 @@ input[type="number"]::before {
 .rocket {
     position: absolute;
     z-index: 1;
-    background: linear-gradient(206.31deg, #F8BA1B 0%, #CD775C 50.52%, #9F20A1 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
+    
     /* -webkit-text-fill-color: transparent; */
 
     top: 60px;
@@ -792,7 +792,15 @@ input[type="number"]::before {
 
 .rocket ion-icon {
     font-size: 115px;
+    /* color: transparent; */
+    
+    -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    /* -webkit-background-clip: text; */
+    /* background-clip: text; */
+    /* background-clip: text; */
 
+    background-image: linear-gradient(206.31deg, #F8BA1B 0%, #CD775C 50.52%, #9F20A1 100%);
 }
 
 .loadingText {

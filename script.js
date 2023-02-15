@@ -179,83 +179,50 @@ function renderCards() {
             .value}`)
         const info = await response.json()
 
-        for (let i = 0; i < info.collection.items.length; i++) {
-            if (info.collection.items[i].data[0].photographer === undefined) {
-                content.innerHTML +=
-                `<div class="contentContainer"><div class="contentCard1">
-                <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
-                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <div class="photographerContainer"><p class="photographer Lalezar"></p></div></div></div></div>`
-            } else {
-                content.innerHTML +=
-                `<div class="contentContainer"><div class="contentCard1">
-                <img src="${info.collection.items[i].links[0].href}" width="200px">
-                <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
-                <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-                <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-                <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
+        setTimeout(() => {
+            for (let i = 0; i < info.collection.items.length; i++) {
+                if (info.collection.items[i].data[0].photographer === undefined) {
+                    content.innerHTML +=
+                    `<div class="contentContainer"><div class="contentCard1">
+                    <img src="${info.collection.items[i].links[0].href}" width="200px">
+                    <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+                    <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                    <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                    <div class="photographerContainer"><p class="photographer Lalezar"></p></div></div></div></div>`
+                } else {
+                    content.innerHTML +=
+                    `<div class="contentContainer"><div class="contentCard1">
+                    <img src="${info.collection.items[i].links[0].href}" width="200px">
+                    <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
+                    <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
+                    <p class="description openSans">${info.collection.items[i].data[0].description}</p>
+                    <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
+                }
             }
-        }
+        }, 1000); 
     };
     ImageAndVideoLibrary();
     content.innerHTML = "";
-
-}
+};
 
 function showLoader() {
     loaderIcons.classList.remove("hidden")
     loadingText.classList.remove("hidden")
     loaderBackgroundBlur.classList.add("activateLoader")
 
-    setTimeout(() => {
-        loaderIcons.classList.add("hidden")
-        loadingText.classList.add("hidden")
-        loaderBackgroundBlur.classList.remove("activateLoader")
-    }, 1000);
+    // setTimeout(() => {
+    //     loaderIcons.classList.add("hidden")
+    //     loadingText.classList.add("hidden")
+    //     loaderBackgroundBlur.classList.remove("activateLoader")
+    // }, 1000);
 
     
 }
 
 function searchForImages() {
     doASearch.classList.add("hidden");
-    // async function ImageAndVideoLibrary() {
-    //     const response = await fetch(`https://images-api.nasa.gov/search?q=${search.value}&year_start=${year_start.value}&year_end=${year_end
-    //         .value}`)
-    //     const info = await response.json()
-
-    // catchedItems = info.collection.items;
-
-    // catchedItems = items;
-    renderCards();
     showLoader();
-    
-
-    // console.log(info)
-    // for (let i = 0; i < info.collection.items.length; i++) {
-
-        // if (i % 2 == 0) {
-        //     content.innerHTML +=
-        //         `<div class="contentContainer"><div class="contentCard1">
-        //     <img src="${info.collection.items[i].links[0].href}" width="200px">
-        //     <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
-        //     <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-        //     <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-        //     <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
-        // } else {
-        //     content.innerHTML +=
-        //         `<div class="contentContainer"><div class="contentCard2">
-        //     <img src="${info.collection.items[i].links[0].href}" width="200px">
-        //     <div class="cardText"><p class="date mulish">${info.collection.items[i].data[0].date_created.slice(0, 10)}</p>
-        //     <p class="title Lalezar">${info.collection.items[i].data[0].title}</p>
-        //     <p class="description openSans">${info.collection.items[i].data[0].description}</p>
-        //     <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
-        // };
-    // };
-    // };
-    // ImageAndVideoLibrary();
-    // content.innerHTML = "";
+    renderCards();
 };
 
 buttonForm.addEventListener("submit", (e) => {
