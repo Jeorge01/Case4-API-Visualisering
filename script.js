@@ -9,16 +9,19 @@ const loaderIcons = document.querySelector(".loaderIcons");
 const loadingText = document.querySelector(".loadingText");
 
 const backgroundOverlay = document.querySelector(".backgroundoverlay");
-const footerName = document.querySelector(".footerName");
-const footerBox = document.querySelector(".myFooter");
-const github = document.querySelector(".github");
-const mail = document.querySelector(".mail");
-const mailEl = document.querySelector(".mailEl");
-const githubEl = document.querySelector(".githubEl");
-const PoweredByNASAApi = document.querySelector(".PBNA");
+
+const firstPageContent = document.querySelector(".firstPageContent");
+
+// const footerName = document.querySelector(".footerName");
+// const footerBox = document.querySelector(".myFooter");
+// const github = document.querySelector(".github");
+// const mail = document.querySelector(".mail");
+// const mailEl = document.querySelector(".mailEl");
+// const githubEl = document.querySelector(".githubEl");
+// const PoweredByNASAApi = document.querySelector(".PBNA");
 const buttonForm = document.querySelector(".buttonForm");
-const startBtn = document.querySelector(".get_started");
-const getStartedDiv = document.querySelector(".container2");
+// const startBtn = document.querySelector(".get_started");
+// const getStartedDiv = document.querySelector(".container2");
 
 const filterIcon = document.createElement("div");
 filterIcon.classList.add("filterIcon")
@@ -56,6 +59,22 @@ filterLine.classList.add("filterLine");
 filterLine.classList.add("hidden");
 const yearFilterContainer = document.createElement("div");
 yearFilterContainer.classList.add("yearFilterContainer")
+const mediaTypeFilterContainer = document.createElement("div");
+mediaTypeFilterContainer.classList.add("mediaTypeFilterContainer");
+const textAndImagesFilterButton = document.createElement("div");
+textAndImagesFilterButton.classList.add("textAndImagesFilterButton");
+const checkboxLabel1 = document.createElement("label");
+const checkboxLabel2 = document.createElement("label");
+const videoFilterButton = document.createElement("input");
+videoFilterButton.type = "checkbox";
+const mediaTypeText = document.createElement("p");
+mediaTypeText.textContent = "Media Type"
+const imagesbutton = document.createElement("input");
+imagesbutton.type = "checkbox";
+const checked1 = document.createElement("div");
+checked1.classList.add("checked");
+const checked2 = document.createElement("div");
+checked2.classList.add("checked");
 
 const year_start_container = document.createElement("div");
 year_start_container.classList.add("year_start_container");
@@ -104,15 +123,16 @@ applyButton.type = "button";
 const catchedItems = [];
 
 function getStartedActions() {
-    startBtn.classList.add("hidden");
-    PoweredByNASAApi.classList.add("hidden");
-    mailEl.classList.add("hidden");
-    mail.classList.add("hidden");
-    githubEl.classList.add("hidden");
-    github.classList.add("hidden");
-    footerName.classList.add("hidden");
-    footerBox.classList.remove("myFooter");
-    getStartedDiv.classList.remove("container2");
+    // startBtn.classList.add("hidden");
+    // PoweredByNASAApi.classList.add("hidden");
+    // mailEl.classList.add("hidden");
+    // mail.classList.add("hidden");
+    // githubEl.classList.add("hidden");
+    // github.classList.add("hidden");
+    // footerName.classList.add("hidden");
+    // footerBox.classList.remove("myFooter");
+    // getStartedDiv.classList.remove("container2");
+    firstPageContent.classList.add("hidden");
     
 
 
@@ -137,12 +157,25 @@ function getStartedActions() {
     doASearch.appendChild(doASearchText);
     filterContent.appendChild(filterLine);
     filterContent.appendChild(yearFilterContainer);
+    filterContent.appendChild(mediaTypeFilterContainer);
+
     yearFilterContainer.appendChild(year_start_container);
     yearFilterContainer.appendChild(year_end_container);
     year_start_container.appendChild(fromText);
     year_end_container.appendChild(toText)
     year_start_container.appendChild(year_start);
     year_end_container.appendChild(year_end);
+
+    mediaTypeFilterContainer.appendChild(textAndImagesFilterButton);
+    textAndImagesFilterButton.appendChild(mediaTypeText);
+    textAndImagesFilterButton.appendChild(checkboxLabel1);
+    checkboxLabel1.appendChild(videoFilterButton);
+    checkboxLabel1.appendChild(checked1);
+    
+    mediaTypeFilterContainer.appendChild(checkboxLabel2);
+    checkboxLabel2.appendChild(imagesbutton);
+    checkboxLabel2.appendChild(checked2);
+
     filterContent.appendChild(applyContainer);
     applyContainer.appendChild(applyButton);
 }
@@ -199,7 +232,7 @@ function renderCards() {
                     <div class="photographerContainer"><p class="photographer Lalezar">By ${info.collection.items[i].data[0].photographer}</p></div></div></div></div>`
                 }
             }
-        }, 1000); 
+        }, 2000); 
     };
     ImageAndVideoLibrary();
     content.innerHTML = "";
@@ -210,11 +243,11 @@ function showLoader() {
     loadingText.classList.remove("hidden")
     loaderBackgroundBlur.classList.add("activateLoader")
 
-    // setTimeout(() => {
-    //     loaderIcons.classList.add("hidden")
-    //     loadingText.classList.add("hidden")
-    //     loaderBackgroundBlur.classList.remove("activateLoader")
-    // }, 1000);
+    setTimeout(() => {
+        loaderIcons.classList.add("hidden")
+        loadingText.classList.add("hidden")
+        loaderBackgroundBlur.classList.remove("activateLoader")
+    }, 2000);
 
     
 }
